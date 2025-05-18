@@ -1,15 +1,22 @@
 import './App.css';
-import { ToDoListProvider } from './GlobalStateContext';
-import ToDoListForm from './ToDoListForm';
-import ToDoList from './ToDoList';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from './NavBar';
+import Home from './pages/HomePage';
+import Profile from './pages/ProfilePage';
+import ToDoList from './pages/ToDoListPage';
 
 function App() {
   return (
-    <ToDoListProvider>
-      <h1>To Do List</h1>
-      <ToDoListForm />
-      <ToDoList />
-    </ToDoListProvider>
+    <Router>
+      <NavBar />
+      <div style={{ padding: "20px" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/todolist" element={<ToDoList />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
